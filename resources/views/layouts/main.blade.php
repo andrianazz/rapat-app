@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <p class="pt-2">Level: Admin</p>
+                    <p class="pt-2">Level: ADMIN</p>
                 </li>
 
             </ul>
@@ -80,7 +80,7 @@
                         <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="/" class="d-block">Admin</a>
+                        <a href="/" class="d-block">ADMIN</a>
                     </div>
                 </div>
 

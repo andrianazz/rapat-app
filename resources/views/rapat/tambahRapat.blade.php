@@ -8,6 +8,7 @@
                 <form method="POST" action="/add-rapat" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
+
                         <div class="form-group">
                             <label>Jenis Rapat</label>
                             <select name="meeting_type_id" class="form-control select2" data-placeholder="Pilih Jenis Rapat" style="width: 100%;">
@@ -18,7 +19,7 @@
                         </div>
                         <div class="form-group">
                             <label for="jenisRapat">Kode Rapat</label>
-                            <input name="kode_rapat" type="text" class="form-control" id="jenisRapat">
+                            <input name="kode_rapat" type="text" class="form-control" id="jenisRapat" placeholder="Masukan Kode Rapat">
                             @error('kode_rapat')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
