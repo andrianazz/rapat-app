@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <p class="pt-2">Level: ADMIN</p>
+                    <p class="pt-2">Level: {{ auth()->user()->id == 1 ? "Admin" : "User" }}</p>
                 </li>
 
             </ul>
@@ -80,7 +80,7 @@
                         <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="/" class="d-block">ADMIN</a>
+                        <a href="/" class="d-block">{{ auth()->user()->name }}</a>
                     </div>
                 </div>
 
@@ -128,6 +128,12 @@
                                         <p>Ruangan</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="/people" class="nav-link {{ $title === 'Peserta' ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Peserta</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
@@ -162,7 +168,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/logout" class="nav-link">
                                 <i class="fas fa-sign-out-alt mr-3" style="color: red;"></i>
                                 <p>
                                     Logout

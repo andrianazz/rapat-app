@@ -7,7 +7,7 @@
     <div class="container-fluid bg-light p-2 mb-3">
         <div class="row">
             <div class="col-sm-7 pt-1 pl-1 h4">
-                Selamat Datang, <strong>ADMIN</strong>
+                Selamat Datang, <strong>{{ auth()->user()->id == 1 ? "Admin" : "User" }}</strong>
             </div>
             <!-- <div class="col-sm-5 text-right">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-edit-profile">

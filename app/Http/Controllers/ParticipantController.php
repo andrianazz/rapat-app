@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Conference;
 use App\Models\Notulen;
 use App\Models\Participant;
+use App\Models\People;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -40,24 +41,37 @@ class ParticipantController extends Controller
 
     public function tambahPeserta(Request $request, $id)
     {
+        $user =
+            DB::table('participants')->where('conference_id', $id)->get();
         $conference_id = $request->id;
+        $data = People::all();
 
         return view('detail.tambahPeserta', [
             'title' => 'Tambah Peserta',
             'name' => 'Andrian Wahyu',
             'conference_id' => $conference_id,
+            'data' => $data,
+            'user' => $user,
         ]);
     }
 
     public function addPeserta(Request $request)
     {
 
-        $validateData = $request->validate([
-            'nama' => 'required',
-            'jabatan' => 'required',
-        ]);
+        $data = $request->participant;
 
-        Participant::create($request->all());
+        foreach ($data as $row) {
+            $insert = People::find($row);
+            DB::table('participants')->insert([
+                'nama' => $insert->nama,
+                'jabatan' => $insert->jabatan,
+                'divisi' => $insert->divisi,
+                'nohp' => $insert->nohp,
+                'conference_id' => $request->conference_id
+            ]);
+        }
+
+        // Participant::create($request->all());
 
         return redirect('/detail-peserta/' . $request->conference_id);
     }
